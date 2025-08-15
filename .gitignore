@@ -1,0 +1,50 @@
+# Logs
+logs/*.log
+*.log
+
+# Temporary files
+/tmp/
+*.tmp
+*.temp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node modules (if using frontend tools)
+node_modules/
+
+# Composer vendor (if using PHP dependencies)
+vendor/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Cache files
+cache/
+*.cache
+
+# Upload directories
+uploads/
+images/temp/
+
+# Database files (for development)
+*.sqlite
+*.db
+
+# Backup files
+*.bak
+*.backup
