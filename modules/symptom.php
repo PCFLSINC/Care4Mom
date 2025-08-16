@@ -9,9 +9,6 @@
 $page_title = 'Symptom Tracking';
 $body_class = 'module-page symptom-page';
 
-// Enable debug mode temporarily
-define('DEBUG_MODE', true);
-
 require_once '../includes/header.php';
 requireLogin();
 
@@ -274,15 +271,6 @@ $common_symptoms = [
     <!-- Symptom History -->
     <div class="history-section">
         <h2 class="section-title">Symptom History</h2>
-        
-        <!-- Debug info -->
-        <?php if (defined('DEBUG_MODE')): ?>
-            <p style="background: yellow; padding: 10px;">
-                Debug: Found <?php echo count($symptoms); ?> symptoms, 
-                Total: <?php echo $total_symptoms ?? 'undefined'; ?>, 
-                User ID: <?php echo $current_user['id'] ?? 'undefined'; ?>
-            </p>
-        <?php endif; ?>
         
         <?php if (empty($symptoms)): ?>
             <div class="empty-state">

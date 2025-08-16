@@ -125,23 +125,6 @@ const Care4Mom = {
         }
     },
     
-    // Handle form submissions
-    handleFormSubmissions: function(event) {
-        const form = event.target;
-        if (form.tagName === 'FORM') {
-            // Store form data for potential recovery  
-            Care4Mom.storeFormData(form);
-            
-            // Show loading state after a brief delay to allow form submission
-            const submitBtn = form.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                setTimeout(() => {
-                    Care4Mom.setButtonLoading(submitBtn, true);
-                }, 100);
-            }
-        }
-    },
-    
     // Handle keyboard shortcuts
     handleKeyboardShortcuts: function(event) {
         // Alt + S: Quick symptom log
