@@ -78,7 +78,11 @@
     </div>
     
     <!-- Core JavaScript -->
-    <script src="assets/js/main.js"></script>
+    <?php 
+    require_once __DIR__ . '/common.php';
+    $assets_path = get_assets_path();
+    ?>
+    <script src="<?php echo $assets_path; ?>js/main.js"></script>
     
     <!-- Additional page-specific scripts -->
     <?php if (isset($additional_scripts)): ?>

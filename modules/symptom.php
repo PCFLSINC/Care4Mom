@@ -85,7 +85,7 @@ try {
     $stmt->execute([$current_user['id'], $limit, $offset]);
     $symptoms = $stmt->fetchAll();
     
-    // Get symptom statistics
+    // Get symptom statistics (SQLite and MySQL compatible)
     $stats_stmt = $pdo->prepare("
         SELECT 
             symptom_name,
@@ -94,7 +94,7 @@ try {
             MAX(severity) as max_severity,
             MIN(severity) as min_severity
         FROM symptoms 
-        WHERE user_id = ? AND logged_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+        WHERE user_id = ? AND logged_at >= datetime('now', '-30 days')
         GROUP BY symptom_name 
         ORDER BY frequency DESC 
         LIMIT 10

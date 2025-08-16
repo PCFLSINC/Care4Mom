@@ -29,10 +29,11 @@ $body_class = $body_class ?? '';
     <title><?php echo htmlspecialchars($page_title); ?> - Care4Mom</title>
     
     <!-- Core CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- Accessibility CSS -->
-    <link rel="stylesheet" href="assets/css/accessibility.css">
+    <?php 
+    // Use __DIR__ to determine if we're in a module directory
+    $assets_path = (strpos(__DIR__, MODULES_DIR) === 0) ? '../assets/' : 'assets/';
+    ?>
+    <link rel="stylesheet" href="<?php echo $assets_path; ?>css/style.css">
     
     <!-- Icons and Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

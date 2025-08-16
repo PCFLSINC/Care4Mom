@@ -33,8 +33,7 @@ const Care4Mom = {
         // Navigation helpers
         document.addEventListener('click', this.handleNavigationClicks);
         
-        // Form helpers
-        document.addEventListener('submit', this.handleFormSubmissions);
+        // Note: Form submission handling removed to allow normal form behavior
         
         // Keyboard shortcuts
         document.addEventListener('keydown', this.handleKeyboardShortcuts);
@@ -123,21 +122,6 @@ const Care4Mom = {
             if (url) {
                 window.location.href = url;
             }
-        }
-    },
-    
-    // Handle form submissions
-    handleFormSubmissions: function(event) {
-        const form = event.target;
-        if (form.tagName === 'FORM') {
-            // Show loading state
-            const submitBtn = form.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                Care4Mom.setButtonLoading(submitBtn, true);
-            }
-            
-            // Store form data for potential recovery
-            Care4Mom.storeFormData(form);
         }
     },
     
