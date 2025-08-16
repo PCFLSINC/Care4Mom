@@ -30,7 +30,8 @@ $body_class = $body_class ?? '';
     
     <!-- Core CSS -->
     <?php 
-    $assets_path = (strpos($_SERVER['REQUEST_URI'], '/modules/') !== false) ? '../assets/' : 'assets/';
+    // Use __DIR__ to determine if we're in a module directory
+    $assets_path = (strpos(__DIR__, MODULES_DIR) === 0) ? '../assets/' : 'assets/';
     ?>
     <link rel="stylesheet" href="<?php echo $assets_path; ?>css/style.css">
     
