@@ -29,10 +29,10 @@ $body_class = $body_class ?? '';
     <title><?php echo htmlspecialchars($page_title); ?> - Care4Mom</title>
     
     <!-- Core CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- Accessibility CSS -->
-    <link rel="stylesheet" href="assets/css/accessibility.css">
+    <?php 
+    $assets_path = (strpos($_SERVER['REQUEST_URI'], '/modules/') !== false) ? '../assets/' : 'assets/';
+    ?>
+    <link rel="stylesheet" href="<?php echo $assets_path; ?>css/style.css">
     
     <!-- Icons and Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

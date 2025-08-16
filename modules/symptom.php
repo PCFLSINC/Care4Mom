@@ -9,6 +9,9 @@
 $page_title = 'Symptom Tracking';
 $body_class = 'module-page symptom-page';
 
+// Enable debug mode temporarily
+define('DEBUG_MODE', true);
+
 require_once '../includes/header.php';
 requireLogin();
 
@@ -85,7 +88,7 @@ try {
     $stmt->execute([$current_user['id'], $limit, $offset]);
     $symptoms = $stmt->fetchAll();
     
-    // Get symptom statistics
+    // Get symptom statistics (SQLite and MySQL compatible)
     $stats_stmt = $pdo->prepare("
         SELECT 
             symptom_name,
@@ -94,7 +97,7 @@ try {
             MAX(severity) as max_severity,
             MIN(severity) as min_severity
         FROM symptoms 
-        WHERE user_id = ? AND logged_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+        WHERE user_id = ? AND logged_at >= datetime('now', '-30 days')
         GROUP BY symptom_name 
         ORDER BY frequency DESC 
         LIMIT 10
@@ -271,6 +274,15 @@ $common_symptoms = [
     <!-- Symptom History -->
     <div class="history-section">
         <h2 class="section-title">Symptom History</h2>
+        
+        <!-- Debug info -->
+        <?php if (defined('DEBUG_MODE')): ?>
+            <p style="background: yellow; padding: 10px;">
+                Debug: Found <?php echo count($symptoms); ?> symptoms, 
+                Total: <?php echo $total_symptoms ?? 'undefined'; ?>, 
+                User ID: <?php echo $current_user['id'] ?? 'undefined'; ?>
+            </p>
+        <?php endif; ?>
         
         <?php if (empty($symptoms)): ?>
             <div class="empty-state">

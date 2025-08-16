@@ -78,7 +78,10 @@
     </div>
     
     <!-- Core JavaScript -->
-    <script src="assets/js/main.js"></script>
+    <?php 
+    $assets_path = (strpos($_SERVER['REQUEST_URI'], '/modules/') !== false) ? '../assets/' : 'assets/';
+    ?>
+    <script src="<?php echo $assets_path; ?>js/main.js"></script>
     
     <!-- Additional page-specific scripts -->
     <?php if (isset($additional_scripts)): ?>
