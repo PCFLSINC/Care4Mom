@@ -79,7 +79,8 @@
     
     <!-- Core JavaScript -->
     <?php 
-    $assets_path = (strpos($_SERVER['REQUEST_URI'], '/modules/') !== false) ? '../assets/' : 'assets/';
+    require_once __DIR__ . '/common.php';
+    $assets_path = get_assets_path();
     ?>
     <script src="<?php echo $assets_path; ?>js/main.js"></script>
     
